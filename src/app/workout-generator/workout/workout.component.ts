@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Workout } from 'app/models/workout';
 import { Exercise } from 'app/models/exercise';
-import { WorkoutGeneratorService } from '../workout-generator.service';
+import { WorkoutGeneratorService } from 'app/shared/workout-generator.service';
 import { StateService } from '../state.service';
 
 @Component({
@@ -21,14 +21,16 @@ export class WorkoutComponent implements OnInit {
   }
 
   selectExercise(ex: Exercise): void {
-    console.log("test");
     this.stateService.addExercise(ex);
   }
 
   ngOnInit() {
     let id = +this.route.snapshot.params['id'] || null;
 
-    if(id) this.workoutGeneratorService.getWorkout(id).then(workout => this.stateService.addWorkout(workout));
+    if(id) {
+      if (!this.workout || this.workout.id != id )
+        this.workoutGeneratorService.getWorkout(id).then(workout => this.stateService.addWorkout(workout));
+    }
 
     console.log('workout:' + id);
   }

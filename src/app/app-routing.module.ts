@@ -5,14 +5,6 @@ import { WorkoutGeneratorComponent } from './workout-generator/workout-generator
 import { BlogComponent } from './blog/blog.component';
 
 const appRoutes: Routes = [
-    {
-      path: 'home',
-      component: WorkoutGeneratorComponent
-    },
-    {
-      path: 'blog',
-      component: BlogComponent
-    }
   ];
 
 @NgModule({

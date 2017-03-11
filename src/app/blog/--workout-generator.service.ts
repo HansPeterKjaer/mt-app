@@ -11,12 +11,12 @@ import { Protocol } from 'app/models/protocol';
 
 @Injectable()
 export class WorkoutGeneratorService {
-	private apiUrl = 'api/'; 
+	private apiUrl = '/api'; 
 	
 	constructor(private http: Http) { }
 
 	getWorkout(id: number): Promise<Workout> {
-		const url = `${this.apiUrl}/workout?id=${id}`;
+		let url = `${this.apiUrl}/api/workout?id=${id}`;
 		return this.http.get(url)
 			.toPromise()
 			.then(response => { 
@@ -32,8 +32,25 @@ export class WorkoutGeneratorService {
 			.catch(this.handleError);
 	}
 
+	getExercise(id: number): Promise<Exercise> {
+		let url = `${this.apiUrl}/api/exercise?id=${id}`;
+		return this.http.get(url)
+			.toPromise()
+			.then(response => { 
+				let d = response.json();
+
+				if (d.success){
+					return this.mapJsonToExercise(d.data);	
+				}                                   
+				else {
+					throw 'error -no exercise found';
+				}
+			})
+			.catch(this.handleError);
+	}
+
 	searchWorkout(c: number, f: number, t: number, cid: number): Promise<Workout> {
-		const url = `${this.apiUrl}/searchWorkout?diff=${c}&focus=${f}&time=${t}&c_wid=${cid}`;
+		const url = `${this.apiUrl}/api/searchWorkout?diff=${c}&focus=${f}&time=${t}&c_wid=${cid}`;
 		return this.http.get(url)
 			.toPromise()
 			.then((response) => {
@@ -54,7 +71,7 @@ export class WorkoutGeneratorService {
 		return Promise.reject(error.message || error);
 	}
 
-	private mapJsonToWorkout(json){
+	private mapJsonToWorkout(json): Workout{
 		var e : Array<Exercise> = [];
 		var p = new Protocol;
 		
@@ -72,7 +89,7 @@ export class WorkoutGeneratorService {
 		return w;
 	}
 
-	private mapJsonToExercise(json){
+	private mapJsonToExercise(json): Exercise{
 		let ex = new Exercise;
 		let images : Array<ExerciseImage> = [];
 		ex.id = +json.id; 

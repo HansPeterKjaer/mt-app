@@ -17,7 +17,7 @@
       <div class="form-group">
         <label class="col-xs-4" for="input-focus">Fokus</label>
         <div class="col-sm-4">
-          <select name="focus" [(ngModel)]="selectedFocus">
+          <select name="focus" [(ngModel)]="selectedFocus" class="form-control swiper-no-swiping">
             <option *ngFor="let focusArea of this.focusAreas" value="{{focusArea.key}}">
               {{focusArea.name}}
             </option>
@@ -27,7 +27,7 @@
       <div class="form-group">          
         <label class="col-xs-4" for="time">Tid</label>
         <div class="col-sm-4">
-          <select [ngModel]="defaultTime" class="form-control swiper-no-swiping" name="time">
+          <select name="time" [ngModel]="defaultTime" class="form-control swiper-no-swiping" >
             <option value="all" ng-selected>Alle</option>
             <option value="short" >Under 15 min</option>
             <option value="long" >Over 15 min</option>

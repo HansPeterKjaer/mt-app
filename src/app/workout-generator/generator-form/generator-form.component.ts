@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import {NgForm} from '@angular/forms';
 
-import { WorkoutGeneratorService } from '../workout-generator.service';
+
+import { WorkoutGeneratorService } from 'app/shared/workout-generator.service';
 import { Workout } from 'app/models/workout';
 import { StateService } from '../state.service';
 import { Globals } from '../../globals';
@@ -20,8 +21,9 @@ export class GeneratorFormComponent implements OnInit {
   defaultTime: string = 'all';
   defaultDiff: number = 3;
 
-  constructor(private stateService: StateService, private workoutGeneratorService: WorkoutGeneratorService, private route: ActivatedRoute) { 
+  constructor(private router: Router, private stateService: StateService, private workoutGeneratorService: WorkoutGeneratorService, private route: ActivatedRoute) { 
     stateService.workout$.subscribe(wo => { this.workout = wo; this.selectedFocus = wo.focus; });
+    
   }
 
   onSubmit(form: NgForm) : void {
@@ -32,7 +34,8 @@ export class GeneratorFormComponent implements OnInit {
     this.workoutGeneratorService.searchWorkout(diff,focus,time,id)
       .then(wo => {
         if (wo){
-          this.stateService.addWorkout(wo);  
+          this.stateService.addWorkout(wo); 
+          this.router.navigate(['/generator', wo.id]) 
         }
         else{
           console.log('No workout found!');

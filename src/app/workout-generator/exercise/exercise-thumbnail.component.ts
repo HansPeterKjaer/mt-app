@@ -13,6 +13,10 @@ export class ExerciseThumbnailComponent implements OnInit {
   @Input()
   exercise: Exercise = null;
 
+  LoadExerciseById(id: number) {
+  	console.log(`load exercise {id}`);
+  }
+
   ngOnInit() {
   	
   }

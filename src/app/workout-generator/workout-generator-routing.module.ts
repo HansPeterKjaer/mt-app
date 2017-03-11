@@ -5,14 +5,13 @@ import { WorkoutGeneratorComponent } from './workout-generator.component';
 //import { WorkoutComponent } from './workout/workout.component';
 //import { GeneratorFormComponent } from './generator-form.component';
 
-
 const workoutGeneratorRoutes: Routes = [
   {
-    path: 'home/:id',
+    path: 'generator/:id',
     component: WorkoutGeneratorComponent,
   },
   {
-    path: 'home',
+    path: 'generator',
     component: WorkoutGeneratorComponent,
   }
 ];
