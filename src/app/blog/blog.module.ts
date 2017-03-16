@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './blog.component';
 import { BlogIndexComponent } from './blog-index/blog-index.component';
+import { BlogPostComponent } from './blog-post/blog-post.component';
+
 import { ExerciseThumbnailComponent } from './exercise/exercise-thumbnail.component';
 import { WorkoutSpotComponent } from './workout/workout-spot.component';
 import { WorkoutGeneratorService } from 'app/shared/workout-generator.service';
@@ -20,6 +22,7 @@ import { StickDirective } from './aside-menu/stick.directive';
     AsideMenuComponent,
   	BlogComponent,
     BlogIndexComponent,
+    BlogPostComponent,
     ExerciseThumbnailComponent,
     WorkoutSpotComponent,
     StickDirective

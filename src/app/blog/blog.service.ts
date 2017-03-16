@@ -11,15 +11,16 @@ export class BlogService {
 
 	constructor(private http: Http) { }
 
-	getPost(id: number): Promise<BlogPost>{
-		let url = `${this.apiUrl}/${id}`;
+	getPost(slug: string): Promise<BlogPost>{
+		let url = `${this.apiUrl}/posts?embed&slug=${slug}`;
 		return this.http.get(url)
 			.toPromise()
 			.then(response => { 
 				let data = response.json();
 
-				if (data.success){
-					return this.mapJsonToPost(data.data);	
+				if (data){
+
+					return this.mapJsonToPost(data[0]);	
 				}                                   
 				else {
 					throw 'error -no workout found';

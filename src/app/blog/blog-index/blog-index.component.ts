@@ -3,7 +3,7 @@ import { Component, OnInit} from '@angular/core';
 import { BlogService } from '../blog.service';
 
 import { BlogPost } from 'app/models/blog-post';
-import {ExerciseThumbnailComponent} from 'app/workout-generator/exercise/exercise-thumbnail.component';
+//import {ExerciseThumbnailComponent} from 'app/workout-generator/exercise/exercise-thumbnail.component';
 
 
 @Component({

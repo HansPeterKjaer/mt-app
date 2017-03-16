@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { BlogPostComponent } from './blog-post/blog-post.component';
 import { BlogIndexComponent } from './blog-index/blog-index.component';
 import { BlogComponent }     from './blog.component';
 
@@ -14,8 +15,8 @@ const routes: Routes = [
 				component: BlogIndexComponent
 			},
 			{
-				path: 'post/:id',
-				component: BlogIndexComponent
+				path: 'post/:slug',
+				component: BlogPostComponent
 			},
 			{
 				path: 'page/:id',
