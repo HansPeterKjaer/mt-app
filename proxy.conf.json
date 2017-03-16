@@ -8,8 +8,9 @@
   	"target": "http://localhost/",
     "secure": false
   },
-  "/wp-json": {
+  "/wpblog/wp-json": {
   	"target": "http://localhost/mt/mtBlog/",
-  	"secure": false
+  	"secure": false,
+    "pathRewrite": {"^/wpblog" : ""}
   } 
 }

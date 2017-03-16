@@ -7,7 +7,7 @@ import { BlogPost } from 'app/models/blog-post';
 
 @Injectable()
 export class BlogService {
-	private apiUrl = '/wp-json/wp/v2'
+	private apiUrl = '/wpblog/wp-json/wp/v2'
 
 	constructor(private http: Http) { }
 

@@ -8,6 +8,8 @@ import { WorkoutSpotComponent } from './workout/workout-spot.component';
 import { WorkoutGeneratorService } from 'app/shared/workout-generator.service';
 import { AsideMenuComponent} from './aside-menu/aside-menu.component'
 import { BlogService } from './blog.service';
+import { WindowRefService } from 'app/shared/window-ref.service';
+import { StickDirective } from './aside-menu/stick.directive';
 
 @NgModule({
   imports: [
@@ -19,11 +21,13 @@ import { BlogService } from './blog.service';
   	BlogComponent,
     BlogIndexComponent,
     ExerciseThumbnailComponent,
-    WorkoutSpotComponent
+    WorkoutSpotComponent,
+    StickDirective
   ],
   providers: [
   	BlogService,
-    WorkoutGeneratorService
+    WorkoutGeneratorService,
+    WindowRefService
   ]
 })
 export class BlogModule { }
