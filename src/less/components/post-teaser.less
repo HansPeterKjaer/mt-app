@@ -1,15 +1,30 @@
 
 .post-teaser{
+	color: @text-black;
+	margin-top: @margin-top-xs;
+	@media (min-width: @screen-md){
+		margin-top: @margin-top-md;
+	}
 	.teaser-image{
 		margin-right: 15px;
 	}
+	.header{
+		margin-top: 0px;
+	}
+
 	&--a{
 
 	}
+
 	&--b{
 
 	}
+
 	&--boxed{
 		background-color: @grey;
+	}
+
+	*:hover{
+		text-decoration: none;
 	}
 }

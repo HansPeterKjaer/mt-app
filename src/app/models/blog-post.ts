@@ -4,4 +4,5 @@ export class BlogPost {
 	content: string;
 	excerpt: string;
 	featuredImage: string;  
+	slug: string;
 }

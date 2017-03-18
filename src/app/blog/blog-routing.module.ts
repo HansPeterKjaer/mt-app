@@ -19,8 +19,8 @@ const routes: Routes = [
 				component: BlogPostComponent
 			},
 			{
-				path: 'page/:id',
-				component: BlogIndexComponent
+				path: 'page/:slug',
+				component: BlogPostComponent
 			}
 		]
 	}

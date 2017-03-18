@@ -19,6 +19,6 @@ export class BlogIndexComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.blogService.getPosts().then(posts => this.posts = posts)
+		this.blogService.getPosts().then(posts => this.posts = posts);
 	}
 }

@@ -17,9 +17,8 @@ export class BlogService {
 			.toPromise()
 			.then(response => { 
 				let data = response.json();
-
+				console.log(response);
 				if (data){
-
 					return this.mapJsonToPost(data[0]);	
 				}                                   
 				else {
@@ -29,15 +28,15 @@ export class BlogService {
 			.catch(this.handleError);
 	}
 
-	getPage(id: number): Promise<BlogPost>{
-		let url = `${this.apiUrl}/${id}`;
+	getPage(slug: string): Promise<BlogPost>{
+		let url = `${this.apiUrl}/pages?embed&slug=${slug}`;
 		return this.http.get(url)
 			.toPromise()
 			.then(response => { 
 				let data = response.json();
-
-				if (data.success){
-					return this.mapJsonToPost(data.data);	
+				console.log(response);
+				if (data){
+					return this.mapJsonToPost(data[0]);	
 				}                                   
 				else {
 					throw 'error -no workout found';
@@ -67,23 +66,6 @@ export class BlogService {
 			.catch(this.handleError);
 	}
 
-/*	getMenu(id: number): Promise<BlogMenu>{
-		let url = `${this.apiUrl}/${id}`;
-		return this.http.get(url)
-			.toPromise()
-			.then(response => { 
-				let data = response.json();
-
-				if (data.success){
-					return this.mapJsonToPost(data.data);	
-				}                                   
-				else {
-					throw 'error -no workout found';
-				}
-			})
-			.catch(this.handleError);
-	}
-*/
 	private handleError(error: any): Promise<any> {
 		//console.error('An error occurred', error); // for demo purposes only
 		return Promise.reject(error.message || error);
@@ -96,6 +78,7 @@ export class BlogService {
 		blogPost.title = json.title.rendered;
 		blogPost.content = json.content.rendered;
 		blogPost.excerpt = json.excerpt.rendered;
+		blogPost.slug = json.slug;
 	//	if (json._embedded && json._embedded['wp:featuredmedia'] ) console.log(json._embedded['wp:featuredmedia'][0]);
 		blogPost.featuredImage = (json._embedded && json._embedded['wp:featuredmedia'] && json._embedded['wp:featuredmedia'][0].media_type == 'image' ) ? json._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url : null;
 		blogPost.featuredImage = (json._embedded && json._embedded['wp:featuredmedia'] && json._embedded['wp:featuredmedia'][0].media_type == 'image' && json._embedded['wp:featuredmedia'][0].media_details.sizes.medium ) ? json._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url : null; 
