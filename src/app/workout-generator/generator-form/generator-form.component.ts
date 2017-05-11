@@ -19,11 +19,11 @@ export class GeneratorFormComponent implements OnInit {
   workout: Workout;
   selectedFocus: number = 5;
   defaultTime: string = 'all';
-  defaultDiff: number = 3;
+  diff: number = 3;
+  warning: boolean = false;
 
   constructor(private router: Router, private stateService: StateService, private workoutGeneratorService: WorkoutGeneratorService, private route: ActivatedRoute) { 
-    stateService.workout$.subscribe(wo => { this.workout = wo; this.selectedFocus = wo.focus; });
-    
+    stateService.workout$.subscribe(wo => { this.workout = (wo) ? wo : null; this.selectedFocus = (wo) ? wo.focus : this.selectedFocus; });
   }
 
   onSubmit(form: NgForm) : void {
@@ -31,16 +31,19 @@ export class GeneratorFormComponent implements OnInit {
     let diff = form.value.diff;
     let focus = form.value.focus;
     let time = form.value.time;
+    
     this.workoutGeneratorService.searchWorkout(diff,focus,time,id)
       .then(wo => {
         if (wo){
           this.stateService.addWorkout(wo); 
-          this.router.navigate(['/generator', wo.id]) 
+          this.warning = false;
+          this.router.navigate(['/generator', wo.id]);
         }
         else{
+          this.stateService.addWorkout(null);
+          this.warning = true;
           console.log('No workout found!');
-        }
-        
+        }       
       })
       .catch(reason => {console.log(reason)});
   }

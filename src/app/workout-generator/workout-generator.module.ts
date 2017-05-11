@@ -9,6 +9,7 @@ import { ExerciseThumbnailComponent } from './exercise/exercise-thumbnail.compon
 import { GeneratorFormComponent } from './generator-form/generator-form.component';
 import { WorkoutGeneratorService } from 'app/shared/workout-generator.service';
 import { StateService } from './state.service';
+import { StrengthCardioIconComponent } from 'app/shared/strength-cardio-icon.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { StateService } from './state.service';
   	WorkoutComponent, 
   	ExerciseComponent, 
   	ExerciseThumbnailComponent, 
-  	GeneratorFormComponent
+  	GeneratorFormComponent,
+    StrengthCardioIconComponent
   ],
   providers: [
   	WorkoutGeneratorService, 

@@ -31,14 +31,7 @@ export class BlogPostComponent implements OnInit {
         	else	
         		this.blogService.getPost(slug).then(post => this.post = post)
 		});
-
-		//this.activatedRoute.params.subscribe((params: Params) => {
-        //	let slug = params['slug'];
-        //	console.log(url)
-        	//if ( 'post')
-        	//	this.blogService.getPost(slug).then(post => this.post = post)
-        	//else	
-        //		this.blogService.getPost(slug).then(post => this.post = post)
-      	//});
 	}
 }
+
+

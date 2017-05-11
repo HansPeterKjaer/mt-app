@@ -22,7 +22,7 @@ import { BlogModule } from './blog/blog.module';
     HttpModule,
     AppRoutingModule,
     WorkoutGeneratorModule,
-    BlogModule
+    BlogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
