@@ -23,7 +23,17 @@ const routes: Routes = [
 				component: BlogPostComponent
 			}
 		]
-	}
+	},
+	{
+    	path: '',
+		component: BlogComponent,
+		children: [
+			{
+				path: '',
+				component: BlogIndexComponent
+			}
+		]
+  	}
 ];
 
 @NgModule({
